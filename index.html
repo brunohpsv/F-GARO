@@ -894,11 +894,11 @@
             <div id="toolSections">
                 <!-- Juntar PDF -->
                 <div id="merge-pdf" class="tool-section active">
-                    <div class="dropzone">
+                    <div id="dropzone" class="dropzone">
                         <div class="dropzone-content">
                             <div class="dropzone-icon">📁</div>
-                            <h3>Selecione os PDFs para juntar</h3>
-                            <p>ou arraste e solte aqui</p>
+                            <h3>Solte seus arquivos aqui</h3>
+                            <p>ou clique para selecionar</p>
                             <button class="btn-primary" id="selectFiles">Selecionar Arquivos</button>
                             <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
                             <div class="file-info">
@@ -948,12 +948,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectExtractFile">Selecionar PDF</button>
                             <input type="file" id="extractFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -990,12 +984,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectPdfToWord">Selecionar PDF</button>
                             <input type="file" id="pdfToWordInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1024,12 +1012,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectImagesToPdf">Selecionar Imagens</button>
                             <input type="file" id="imagesToPdfInput" multiple accept=".jpg,.jpeg,.png" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: JPG, JPEG, PNG</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte os arquivos aqui!</div>
                         </div>
                     </div>
 
@@ -1058,12 +1040,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectRotateFile">Selecionar PDF</button>
                             <input type="file" id="rotateFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1108,12 +1084,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectRemoveFile">Selecionar PDF</button>
                             <input type="file" id="removeFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1150,12 +1120,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectReorderFile">Selecionar PDF</button>
                             <input type="file" id="reorderFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1192,12 +1156,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectWatermarkFile">Selecionar PDF</button>
                             <input type="file" id="watermarkFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1244,12 +1202,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectProtectFile">Selecionar PDF</button>
                             <input type="file" id="protectFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1290,12 +1242,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectUnlockFile">Selecionar PDF</button>
                             <input type="file" id="unlockFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1332,12 +1278,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectCompressFile">Selecionar PDF</button>
                             <input type="file" id="compressFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -1378,12 +1318,6 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectOcrFile">Selecionar PDF</button>
                             <input type="file" id="ocrFileInput" accept=".pdf" style="display: none;">
-                            <div class="file-info">
-                                <small>Suporte: PDF</small>
-                            </div>
-                        </div>
-                        <div class="dropzone-overlay">
-                            <div class="overlay-content">Solte o arquivo aqui!</div>
                         </div>
                     </div>
 
@@ -2711,3 +2645,4 @@
     </script>
 </body>
 </html>
+
