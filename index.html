@@ -1083,9 +1083,79 @@
                     </div>
                 </div>
 
-                <!-- Adicione mais seções de ferramentas aqui seguindo o mesmo padrão -->
-                
-                <!-- Template para novas ferramentas -->
+                <!-- Converter PDF para Word -->
+                <div id="pdf-to-word" class="tool-section">
+                    <div class="dropzone">
+                        <div class="dropzone-content">
+                            <div class="dropzone-icon">📁</div>
+                            <h3>Selecione o PDF para converter</h3>
+                            <p>ou arraste e solte aqui</p>
+                            <button class="btn-primary" id="selectPdfToWord">Selecionar PDF</button>
+                            <input type="file" id="pdfToWordInput" accept=".pdf" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="tool-options">
+                        <h4>Opções de Conversão</h4>
+                        <div class="option-row">
+                            <label for="wordFormat">Formato:</label>
+                            <select id="wordFormat">
+                                <option value="docx">DOCX (Word Moderno)</option>
+                                <option value="doc">DOC (Word Antigo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="action-section">
+                        <button class="btn-merge" onclick="convertPdfToWord()">
+                            <span class="icon-merge"></span>
+                            CONVERTER PARA WORD
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Proteger PDF -->
+                <div id="protect-pdf" class="tool-section">
+                    <div class="dropzone">
+                        <div class="dropzone-content">
+                            <div class="dropzone-icon">📁</div>
+                            <h3>Selecione o PDF para proteger</h3>
+                            <p>ou arraste e solte aqui</p>
+                            <button class="btn-primary" id="selectProtectFile">Selecionar PDF</button>
+                            <input type="file" id="protectFileInput" accept=".pdf" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="tool-options">
+                        <h4>Configurações de Proteção</h4>
+                        <div class="option-row">
+                            <label for="password">Senha:</label>
+                            <input type="password" id="password" placeholder="Digite a senha">
+                        </div>
+                        <div class="option-row">
+                            <label for="confirmPassword">Confirmar Senha:</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirme a senha">
+                        </div>
+                        <div class="option-row">
+                            <label for="permissions">Permissões:</label>
+                            <select id="permissions">
+                                <option value="none">Sem restrições</option>
+                                <option value="printing">Apenas impressão</option>
+                                <option value="nocopy">Sem cópia de conteúdo</option>
+                                <option value="noedit">Sem edição</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="action-section">
+                        <button class="btn-merge" onclick="protectPDF()">
+                            <span class="icon-merge"></span>
+                            PROTEGER PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Template para outras ferramentas -->
                 <div id="template-tool" class="tool-section">
                     <div class="dropzone">
                         <div class="dropzone-content">
@@ -1195,8 +1265,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="modal-icon">✅</div>
-            <h3>PDF Criado com Sucesso!</h3>
-            <p>Seu arquivo PDF foi gerado e está pronto para download.</p>
+            <h3 id="modalTitle">PDF Criado com Sucesso!</h3>
+            <p id="modalMessage">Seu arquivo PDF foi gerado e está pronto para download.</p>
             <button class="btn-download" id="downloadBtn">📥 Baixar PDF</button>
         </div>
     </div>
@@ -1338,6 +1408,20 @@
                 }
                 
                 this.currentTool = toolId;
+                
+                // Atualiza o botão de ação baseado na ferramenta selecionada
+                this.updateActionButton(toolId);
+            }
+
+            updateActionButton(toolId) {
+                const actionSection = document.querySelector('.action-section');
+                const button = actionSection.querySelector('.btn-merge');
+                
+                // Define o texto e ícone do botão baseado na ferramenta
+                const tool = this.tools.find(t => t.id === toolId);
+                if (tool) {
+                    button.innerHTML = `<span class="icon-merge"></span> ${tool.name.toUpperCase()}`;
+                }
             }
 
             // Inicialização de eventos
@@ -1373,6 +1457,23 @@
                     e.preventDefault();
                     dropzone.classList.remove('drag-over');
                     this.handleFileSelection(e.dataTransfer.files);
+                });
+
+                // Event listeners para outras ferramentas
+                document.getElementById('selectSplitFile').addEventListener('click', () => {
+                    document.getElementById('splitFileInput').click();
+                });
+
+                document.getElementById('selectCompressFile').addEventListener('click', () => {
+                    document.getElementById('compressFileInput').click();
+                });
+
+                document.getElementById('selectPdfToWord').addEventListener('click', () => {
+                    document.getElementById('pdfToWordInput').click();
+                });
+
+                document.getElementById('selectProtectFile').addEventListener('click', () => {
+                    document.getElementById('protectFileInput').click();
                 });
 
                 // Teclas de atalho
@@ -1803,9 +1904,53 @@
             }
 
             // Processamento de PDF
-            async mergeFiles() {
+            async processTool() {
                 if (this.isProcessing) return;
 
+                // Verifica se há arquivos para processar
+                if (this.files.length === 0) {
+                    this.showError('Adicione pelo menos um arquivo para continuar.');
+                    return;
+                }
+
+                this.isProcessing = true;
+                this.showLoading();
+
+                try {
+                    // Processa baseado na ferramenta atual
+                    let result;
+                    switch(this.currentTool) {
+                        case 'merge-pdf':
+                            result = await this.mergeFiles();
+                            break;
+                        case 'split-pdf':
+                            result = await this.splitPDF();
+                            break;
+                        case 'compress-pdf':
+                            result = await this.compressPDF();
+                            break;
+                        case 'pdf-to-word':
+                            result = await this.convertPdfToWord();
+                            break;
+                        case 'protect-pdf':
+                            result = await this.protectPDF();
+                            break;
+                        default:
+                            result = await this.processDefault();
+                    }
+                    
+                    this.hideLoading();
+                    this.showResult(result);
+                    
+                } catch (error) {
+                    this.hideLoading();
+                    this.showError('Erro ao processar arquivos: ' + error.message);
+                }
+
+                this.isProcessing = false;
+            }
+
+            async mergeFiles() {
                 const isPageMode = document.getElementById('pageMode').checked;
                 const filesToProcess = isPageMode ? this.selectedPages : this.files;
 
@@ -1817,25 +1962,124 @@
                     return;
                 }
 
-                this.isProcessing = true;
-                this.showLoading();
+                // Simula o processamento
+                await this.simulateProcessing(filesToProcess);
+                
+                // Em uma implementação real, aqui usaria uma biblioteca como pdf-lib
+                const mergedPdf = await this.createMergedPdf(filesToProcess);
+                
+                return {
+                    blob: mergedPdf,
+                    title: 'PDFs Juntados com Sucesso!',
+                    message: 'Seus arquivos PDF foram combinados em um único documento.'
+                };
+            }
 
-                try {
-                    // Simula o processamento
-                    await this.simulateProcessing(filesToProcess);
-                    
-                    // Em uma implementação real, aqui usaria uma biblioteca como pdf-lib
-                    const mergedPdf = await this.createMergedPdf(filesToProcess);
-                    
-                    this.hideLoading();
-                    this.showResult(mergedPdf);
-                    
-                } catch (error) {
-                    this.hideLoading();
-                    this.showError('Erro ao processar arquivos: ' + error.message);
+            async splitPDF() {
+                // Verifica se há um arquivo para dividir
+                if (this.files.length === 0) {
+                    this.showError('Adicione um PDF para dividir.');
+                    return;
                 }
 
-                this.isProcessing = false;
+                // Simulação de processamento
+                await this.simulateProcessing(this.files);
+                
+                // Em uma implementação real, processaria o PDF
+                const resultBlob = new Blob(['PDF dividido com sucesso'], { type: 'application/pdf' });
+                
+                return {
+                    blob: resultBlob,
+                    title: 'PDF Dividido com Sucesso!',
+                    message: 'Seu PDF foi dividido conforme as opções selecionadas.'
+                };
+            }
+
+            async compressPDF() {
+                // Verifica se há um arquivo para comprimir
+                if (this.files.length === 0) {
+                    this.showError('Adicione um PDF para comprimir.');
+                    return;
+                }
+
+                // Simulação de processamento
+                await this.simulateProcessing(this.files);
+                
+                // Em uma implementação real, processaria o PDF
+                const resultBlob = new Blob(['PDF comprimido com sucesso'], { type: 'application/pdf' });
+                
+                return {
+                    blob: resultBlob,
+                    title: 'PDF Comprimido com Sucesso!',
+                    message: 'Seu PDF foi comprimido e está pronto para download.'
+                };
+            }
+
+            async convertPdfToWord() {
+                // Verifica se há um arquivo para converter
+                if (this.files.length === 0) {
+                    this.showError('Adicione um PDF para converter.');
+                    return;
+                }
+
+                // Simulação de processamento
+                await this.simulateProcessing(this.files);
+                
+                // Em uma implementação real, converteria o PDF para Word
+                const resultBlob = new Blob(['Documento Word convertido com sucesso'], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+                
+                return {
+                    blob: resultBlob,
+                    title: 'PDF Convertido para Word!',
+                    message: 'Seu PDF foi convertido para o formato Word editável.'
+                };
+            }
+
+            async protectPDF() {
+                // Verifica se há um arquivo para proteger
+                if (this.files.length === 0) {
+                    this.showError('Adicione um PDF para proteger.');
+                    return;
+                }
+
+                // Verifica se as senhas coincidem
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    this.showError('As senhas não coincidem.');
+                    return;
+                }
+
+                if (!password) {
+                    this.showError('Digite uma senha para proteger o PDF.');
+                    return;
+                }
+
+                // Simulação de processamento
+                await this.simulateProcessing(this.files);
+                
+                // Em uma implementação real, protegeria o PDF
+                const resultBlob = new Blob(['PDF protegido com sucesso'], { type: 'application/pdf' });
+                
+                return {
+                    blob: resultBlob,
+                    title: 'PDF Protegido com Sucesso!',
+                    message: 'Seu PDF foi protegido com senha e está pronto para download.'
+                };
+            }
+
+            async processDefault() {
+                // Processamento padrão para ferramentas sem implementação específica
+                await this.simulateProcessing(this.files);
+                
+                const resultBlob = new Blob(['Processamento concluído com sucesso'], { type: 'application/pdf' });
+                
+                return {
+                    blob: resultBlob,
+                    title: 'Processamento Concluído!',
+                    message: 'Sua operação foi concluída com sucesso.'
+                };
             }
 
             async simulateProcessing(files) {
@@ -1868,29 +2112,6 @@
                 return new Blob([content], { type: 'application/pdf' });
             }
 
-            // Funções para outras ferramentas (simuladas)
-            async splitPDF() {
-                this.showLoading();
-                // Simulação de processamento
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                this.hideLoading();
-                
-                // Em uma implementação real, processaria o PDF
-                const resultBlob = new Blob(['PDF dividido com sucesso'], { type: 'application/pdf' });
-                this.showResult(resultBlob, 'PDFs Divididos com Sucesso!');
-            }
-
-            async compressPDF() {
-                this.showLoading();
-                // Simulação de processamento
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                this.hideLoading();
-                
-                // Em uma implementação real, processaria o PDF
-                const resultBlob = new Blob(['PDF comprimido com sucesso'], { type: 'application/pdf' });
-                this.showResult(resultBlob, 'PDF Comprimido com Sucesso!');
-            }
-
             // Interface do usuário - Utilitários
             showLoading() {
                 document.getElementById('loadingOverlay').classList.remove('hidden');
@@ -1900,19 +2121,22 @@
                 document.getElementById('loadingOverlay').classList.add('hidden');
             }
 
-            showResult(pdfBlob, title = 'PDF Criado com Sucesso!') {
+            showResult(result) {
                 const resultModal = document.getElementById('resultModal');
                 const downloadBtn = document.getElementById('downloadBtn');
-                const modalTitle = resultModal.querySelector('h3');
+                const modalTitle = document.getElementById('modalTitle');
+                const modalMessage = document.getElementById('modalMessage');
                 
-                modalTitle.textContent = title;
+                modalTitle.textContent = result.title;
+                modalMessage.textContent = result.message;
                 
                 // Configura o download
-                const url = URL.createObjectURL(pdfBlob);
+                const url = URL.createObjectURL(result.blob);
+                const fileExtension = result.blob.type.includes('word') ? 'docx' : 'pdf';
                 downloadBtn.onclick = () => {
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `figaro-${this.currentTool}-${new Date().getTime()}.pdf`;
+                    a.download = `figaro-${this.currentTool}-${new Date().getTime()}.${fileExtension}`;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
@@ -1986,15 +2210,27 @@
         }
 
         function mergeFiles() {
-            figaro.mergeFiles();
+            figaro.processTool();
         }
 
         function splitPDF() {
-            figaro.splitPDF();
+            figaro.processTool();
         }
 
         function compressPDF() {
-            figaro.compressPDF();
+            figaro.processTool();
+        }
+
+        function convertPdfToWord() {
+            figaro.processTool();
+        }
+
+        function protectPDF() {
+            figaro.processTool();
+        }
+
+        function processTemplate() {
+            figaro.processTool();
         }
 
         function closeModal() {
