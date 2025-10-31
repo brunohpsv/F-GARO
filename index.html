@@ -1,1607 +1,1023 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt" dir="ltr" class="redTheme sectionsCollapsed expandSectionsOnNewUsers">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIGARO - Juntar PDF Online</title>
+    <title>FÍGARO - FAZ DE TUDO: Soluções para todos os tipos de serviços</title>
+    <meta name="description" content="Serviços completos para casa, escritório e muito mais. Rápido e fácil. Profissionais qualificados.">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#8B0000">
+    <meta name="themes" content="redTheme,orangeTheme,darkTheme">
+    <meta name="pageId" content="home">
+    <meta property="og:title" content="FÍGARO - FAZ DE TUDO: Soluções para todos os tipos de serviços">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://figaro-fazdetudo.com">
+    <meta property="og:image" content="https://figaro-fazdetudo.com/static/img/share/home.png">
+    <meta property="og:site_name" content="FÍGARO - FAZ DE TUDO">
+    <meta property="og:description" content="Serviços completos para casa, escritório e muito mais. Rápido e fácil. Profissionais qualificados.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@figarofazdetudo">
+    <meta name="twitter:creator" content="@figarofazdetudo">
+    <meta name="twitter:title" content="FÍGARO - FAZ DE TUDO: Soluções para todos os tipos de serviços">
+    <meta name="twitter:description" content="Serviços completos para casa, escritório e muito mais. Rápido e fácil. Profissionais qualificados.">
+    <meta name="twitter:image:src" content="https://figaro-fazdetudo.com/static/img/share/home.png">
+    <link rel="canonical" href="https://figaro-fazdetudo.com">
+    <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzhCMDAwMCIvPgo8cGF0aCBkPSJNMTYgMTZMMjAgMjBMMTYgMjRMMTIgMjBMMTYgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTIgMTJMMTYgMTZMMTIgMjBMMTAgMThMMTIgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjAgMTJMMTYgMTZMMjAgMjBMMjIgMThMMjAgMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiM4QjAwMDAiLz4KPHBhdGggZD0iTTk2IDk2TDEyMCAxMjBMOTYgMTQ0TDcyIDEyMEw5NiA5NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03MiA3Mkw5NiA5Nkw3MiAxMjBMNjAgMTA4TDcyIDk2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEyMCA3Mkw5NiA5NkwxMjAgMTIwTDEzMiAxMDhMMTIwIDk2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==">
     <style>
-        /* Reset e Variáveis */
         :root {
-            --primary-color: #D63333;
-            --primary-dark: #B32B2B;
-            --primary-light: #FF6B6B;
-            --secondary-color: #333333;
-            --background-color: #FFFFFF;
-            --surface-color: #F8F9FA;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --border-color: #E0E0E0;
-            --success-color: #28A745;
-            --warning-color: #FFC107;
-            --error-color: #DC3545;
+            --primary-color: #8B0000;
+            --primary-dark: #660000;
+            --primary-light: #B22222;
+            --secondary-color: #FFD700;
+            --text-color: #333333;
+            --light-text: #FFFFFF;
+            --background-light: #F5F5F5;
+            --border-color: #DDDDDD;
             --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --background-color: #1A1A1A;
-            --surface-color: #2D2D2D;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B0B0B0;
-            --border-color: #404040;
-            --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-primary);
+            background-color: var(--background-light);
+            color: var(--text-color);
             line-height: 1.6;
-            transition: var(--transition);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         /* Header */
         #header {
-            background: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            z-index: 100;
         }
 
-        #header .container {
+        #topBar {
+            padding: 10px 0;
+        }
+
+        #topBar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .brand h1 {
-            color: var(--primary-color);
-            font-size: 2rem;
+        .brand {
+            font-size: 1.8rem;
             font-weight: bold;
-            margin: 0;
         }
 
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-left: 0.5rem;
-        }
-
-        .nav-btn {
-            background: none;
-            border: 2px solid var(--border-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
+        .brand a {
+            color: var(--light-text);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: var(--transition);
         }
 
-        .nav-btn:hover {
-            border-color: var(--primary-color);
-            background: var(--primary-color);
-            color: white;
+        .brand .main {
+            color: var(--secondary-color);
+        }
+
+        .brand .sub {
+            font-size: 1.2rem;
+            margin-left: 5px;
+        }
+
+        .allToolsLink {
+            color: var(--light-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .allToolsLink:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .centerPane .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-text);
+            padding: 5px;
+        }
+
+        .rightPane .menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rightPane .menu a, .rightPane .menu i {
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .rightPane .menu a:hover, .rightPane .menu i:hover {
+            color: var(--secondary-color);
         }
 
         /* Main Content */
-        .main-container {
-            padding: 3rem 0;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero-section h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+        .mb4 {
             margin-bottom: 2rem;
-        }
-
-        .features-highlights {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .feature-badge {
-            background: var(--primary-light);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Dropzone */
-        .dropzone {
-            border: 3px dashed var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 3rem 2rem;
+            padding: 2rem 0;
             text-align: center;
-            background: var(--surface-color);
-            transition: var(--transition);
-            position: relative;
-            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: var(--light-text);
         }
 
-        .dropzone:hover {
-            border-color: var(--primary-color);
-            background: rgba(214, 51, 51, 0.02);
-        }
-
-        .dropzone.drag-over {
-            border-color: var(--primary-color);
-            background: rgba(214, 51, 51, 0.05);
-        }
-
-        .dropzone-icon {
-            font-size: 4rem;
+        h1 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .dropzone h3 {
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .dropzone p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .dropzone-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(214, 51, 51, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--border-radius);
-        }
-
-        .dropzone.drag-over .dropzone-overlay {
-            display: flex;
-        }
-
-        .overlay-content {
-            color: white;
+        h2 {
             font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: var(--surface-color);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-danger {
-            background: var(--error-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .btn-danger:hover {
-            background: #C82333;
-        }
-
-        .btn-merge {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-weight: normal;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .btn-merge:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-download {
-            background: var(--success-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-        }
-
-        .btn-download:hover {
-            background: #218838;
-        }
-
-        /* File List */
-        .file-list {
-            background: var(--surface-color);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
+        /* Tool Selection */
+        .toolSelect {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background-color: var(--light-text);
+            border-radius: 8px;
             box-shadow: var(--shadow);
+            padding: 1.5rem;
         }
 
-        .file-list h4 {
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .file-list-container {
-            max-height: 400px;
-            overflow-y: auto;
-            margin-bottom: 1.5rem;
-        }
-
-        .file-item {
+        .filters {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-            background: var(--background-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            margin-bottom: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .file-item:hover {
-            border-color: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .file-icon {
-            font-size: 1.5rem;
-        }
-
-        .file-details h5 {
-            margin: 0;
-            color: var(--text-primary);
-        }
-
-        .file-details small {
-            color: var(--text-secondary);
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .file-action-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.25rem;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .file-action-btn:hover {
-            background: var(--border-color);
-        }
-
-        .file-actions-group {
-            display: flex;
-            gap: 1rem;
             justify-content: center;
-            margin-top: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
-        /* Options */
-        .options-section {
-            background: var(--surface-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
+        .filter {
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            margin: 0 5px;
         }
 
-        .option-group {
+        .filter.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .sep {
+            width: 1px;
+            height: 20px;
+            background-color: var(--border-color);
+            margin: 0 10px;
+        }
+
+        .searchSep {
+            margin-left: 20px;
+        }
+
+        input[name="search"] {
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 200px;
+            outline: none;
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .toolLink {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-        }
-
-        .option-label {
-            display: flex;
             align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .option-label:hover {
-            background: rgba(214, 51, 51, 0.05);
-        }
-
-        .option-label input {
-            display: none;
-        }
-
-        .option-slider {
-            width: 50px;
-            height: 24px;
-            background: var(--border-color);
-            border-radius: 12px;
+            padding: 15px 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 8px;
+            transition: all 0.3s;
             position: relative;
-            transition: var(--transition);
         }
 
-        .option-slider:before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: var(--transition);
-        }
-
-        .option-label input:checked + .option-slider {
-            background: var(--primary-color);
-        }
-
-        .option-label input:checked + .option-slider:before {
-            transform: translateX(26px);
-        }
-
-        /* Action Section */
-        .action-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .merge-info {
-            margin-top: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Page Mode */
-        .page-mode-sections {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .page-section {
-            background: var(--surface-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
+        .toolLink:hover {
+            background-color: var(--background-light);
+            transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
 
-        .page-section h4 {
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .page-selection, .page-order {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .page-thumbnail {
-            background: var(--background-color);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .page-thumbnail:hover {
-            border-color: var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .page-thumbnail.selected {
-            border-color: var(--primary-color);
-            background: rgba(214, 51, 51, 0.1);
-        }
-
-        .page-number {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        /* Info Sections */
-        .info-section {
-            padding: 4rem 0;
-            background: var(--surface-color);
-        }
-
-        .info-section.alt {
-            background: var(--background-color);
-        }
-
-        .info-section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .step-number {
+        .toolLink .icon {
             width: 60px;
             height: 60px;
-            background: var(--primary-color);
-            color: white;
+            background-color: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 10px;
+            color: var(--light-text);
             font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
         }
 
-        .features-grid {
+        .toolLink .label {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .favstar {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn.big {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn.orange {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .btn.orange:hover {
+            background-color: #e6c200;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section .title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section .subTitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .infoCells {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .feature {
+        .cell {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: var(--light-text);
+            box-shadow: var(--shadow);
         }
 
-        .feature-icon {
+        .cell .icon {
             font-size: 3rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
+        }
+
+        .cell h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .developer-bio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--light-text);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .developer-bio img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        /* Share Section */
+        #shareSection {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        #shareSection .title {
+            color: var(--light-text);
+        }
+
+        #share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn.white {
+            background-color: var(--light-text);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn.white:hover {
+            background-color: var(--secondary-color);
         }
 
         /* Footer */
         #footer {
-            background: var(--secondary-color);
-            color: white;
-            padding: 3rem 0 1rem;
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            padding: 2rem 0;
         }
 
-        .footer-content {
+        #footerLinks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mcol {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #footerLinks a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        #footerLinks a:hover {
+            color: var(--secondary-color);
+        }
+
+        #footerSocialLang {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin: 1.5rem 0;
             flex-wrap: wrap;
-            gap: 2rem;
         }
 
-        .footer-links {
+        #footerSocial {
             display: flex;
-            gap: 2rem;
+            gap: 10px;
         }
 
-        .footer-links a {
-            color: white;
+        #footerLang ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 10px;
+        }
+
+        #footerLang a {
+            color: var(--light-text);
             text-decoration: none;
-            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
-        .footer-links a:hover {
-            color: var(--primary-light);
+        #footerLang a:hover {
+            background-color: var(--primary-color);
         }
 
-        .footer-bottom {
+        #footerLang .selected a {
+            background-color: var(--primary-color);
+        }
+
+        #footerUrl {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Loading Overlay */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
-
-        .loading-content {
-            background: var(--background-color);
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: var(--background-color);
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: var(--transition);
-        }
-
-        .close-btn:hover {
-            color: var(--primary-color);
-        }
-
-        .modal-icon {
-            font-size: 4rem;
             margin-bottom: 1rem;
         }
 
-        /* Utility Classes */
-        .hidden {
-            display: none !important;
+        #footerUrl a {
+            color: var(--light-text);
+            text-decoration: none;
         }
 
-        .drag-over {
-            border-color: var(--primary-color) !important;
-            background: rgba(214, 51, 51, 0.05) !important;
+        #footerNote {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
-        /* Icons */
-        .icon-theme:before { content: '🌙'; }
-        .icon-sort-up:before { content: '↑'; }
-        .icon-sort-down:before { content: '↓'; }
-        .icon-clear:before { content: '🗑️'; }
-        .icon-merge:before { content: '🔄'; }
-        .icon-delete:before { content: '❌'; }
-        .icon-move:before { content: '↕️'; }
+        .love {
+            color: var(--secondary-color);
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-section h2 {
-                font-size: 2rem;
-            }
-            
-            .page-mode-sections {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
+            #topBar .container {
                 flex-direction: column;
-                text-align: center;
+                gap: 15px;
             }
-            
-            .file-actions-group {
-                flex-direction: column;
-            }
-            
-            .features-highlights {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
+            .items {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
-            
-            .main-container {
-                padding: 2rem 0;
-            }
-            
-            .dropzone {
-                padding: 2rem 1rem;
-            }
-            
-            .file-item {
+
+            .filters {
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                gap: 10px;
+            }
+
+            .sep {
+                display: none;
+            }
+
+            .searchSep {
+                margin-left: 0;
+            }
+
+            #footerSocialLang {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <div class="brand">
-                <h1>FIGARO</h1>
-                <span class="subtitle">PDF Tools</span>
-            </div>
-            <nav class="main-nav">
-                <button class="nav-btn" onclick="toggleTheme()" title="Alternar tema">
-                    <span class="icon-theme"></span>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Tool Section -->
-    <main id="tool">
-        <div class="container main-container">
-            <div class="hero-section">
-                <h2>Juntar PDF</h2>
-                <p class="subtitle">Combine vários arquivos em um único PDF de forma rápida e fácil</p>
-                
-                <!-- Features Highlights -->
-                <div class="features-highlights">
-                    <span class="feature-badge">💯 Gratuito</span>
-                    <span class="feature-badge">🌐 Online</span>
-                    <span class="feature-badge">🔒 Seguro</span>
-                    <span class="feature-badge">⚡ Rápido</span>
-                </div>
-            </div>
-
-            <!-- Drop Zone -->
-            <div id="dropzone" class="dropzone">
-                <div class="dropzone-content">
-                    <div class="dropzone-icon">📁</div>
-                    <h3>Solte seus arquivos aqui</h3>
-                    <p>ou clique para selecionar</p>
-                    <button class="btn-primary" id="selectFiles">Selecionar Arquivos</button>
-                    <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;">
-                    <div class="file-info">
-                        <small>Suporte: PDF, Word, JPEG, PNG</small>
+<body style="display:flex; flex-direction:column">
+    <div style="flex-grow:1">
+        <div id="header">
+            <div id="topBar">
+                <div class="container">
+                    <div class="leftPane">
+                        <div class="brand" title="Para a página inicial">
+                            <a href="/">
+                                <span class="main">FÍGARO</span>
+                                <span class="sub">TOOLS</span>
+                            </a>
+                        </div>
+                        <a class="allToolsLink" href="/todas-as-ferramentas" title="Para a página de todas as ferramentas">
+                            <span style="font-size:1.0em; margin-top:-1px;">Todos os serviços</span>
+                        </a>
                     </div>
-                </div>
-                <div class="dropzone-overlay">
-                    <div class="overlay-content">Solte os arquivos aqui!</div>
-                </div>
-            </div>
-
-            <!-- File List -->
-            <div id="fileList" class="file-list hidden">
-                <h4>Arquivos Selecionados</h4>
-                <div class="file-list-container" id="fileListContainer">
-                    <!-- Files will be listed here -->
-                </div>
-                <div class="file-actions">
-                    <button class="btn-secondary" onclick="sortFiles('asc')">
-                        <span class="icon-sort-up"></span> Ordem A-Z
-                    </button>
-                    <button class="btn-secondary" onclick="sortFiles('desc')">
-                        <span class="icon-sort-down"></span> Ordem Z-A
-                    </button>
-                    <button class="btn-danger" onclick="clearAllFiles()">
-                        <span class="icon-clear"></span> Limpar Tudo
-                    </button>
-                </div>
-            </div>
-
-            <!-- Options -->
-            <div id="options" class="options-section hidden">
-                <div class="option-group">
-                    <label class="option-label">
-                        <input type="checkbox" id="pageMode">
-                        <span class="option-slider"></span>
-                        Modo Página (Selecionar páginas específicas)
-                    </label>
-                    
-                    <label class="option-label">
-                        <input type="checkbox" id="createBookmarks">
-                        <span class="option-slider"></span>
-                        Criar Marcadores
-                    </label>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div id="actionSection" class="action-section hidden">
-                <button class="btn-merge" id="mergeBtn" onclick="mergeFiles()">
-                    <span class="icon-merge"></span>
-                    JUNTAR PDF
-                </button>
-                <div class="merge-info" id="mergeInfo"></div>
-            </div>
-
-            <!-- Page Mode Sections -->
-            <div id="pageModeSections" class="page-mode-sections hidden">
-                <div class="page-section">
-                    <h4>Selecione as Páginas</h4>
-                    <div id="pageSelection" class="page-selection">
-                        <!-- Pages will be displayed here -->
+                    <div class="centerPane">
+                        <div class="logo" title="Recarregar a página atual">
+                            <a href="/" aria-label="Recarregar página">
+                                <svg width="60" height="60" viewBox="0 0 32 32" fill="none">
+                                    <rect width="32" height="32" rx="4" fill="#8B0000"/>
+                                    <path d="M16 16L20 20L16 24L12 20L16 16Z" fill="white"/>
+                                    <path d="M12 12L16 16L12 20L10 18L12 16Z" fill="white"/>
+                                    <path d="M20 12L16 16L20 20L22 18L20 16Z" fill="white"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="page-section">
-                    <h4>Ordem Final</h4>
-                    <div id="pageOrder" class="page-order">
-                        <!-- Selected pages in order -->
+                    <div class="rightPane">
+                        <div class="menu noUserSelect middleAll">
+                            <a class="download enableOnDocReady" href="/contato" title="Entre em contato conosco">
+                                <i style="font-size:32px">📞</i>
+                                <span class="text hidden">Contato</span>
+                            </a>
+                            <i style="font-size:32px; cursor: pointer;" title="Alternar tema" onclick="toggleTheme()">🎨</i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- How It Works Section -->
-    <section id="howItWorks" class="info-section">
-        <div class="container">
-            <h2>Como Funciona</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Selecione os Arquivos</h3>
-                    <p>Escolha os PDFs que deseja juntar</p>
+        <div class="mb4">
+            <h1>FÍGARO - FAZ DE TUDO</h1>
+            <h2>Serviços completos para casa, escritório e muito mais. Rápido e fácil. Profissionais qualificados.</h2>
+
+            <div class="mt2" style="max-width:2000px; margin:auto">
+                <div class="toolSelect">
+                    <div class="filters">
+                        <span class="filter active" data-show="all">Tudo</span>
+                        <span class="sep"></span>
+                        <span class="filter" data-show="lastUsed">Usado por último</span>
+                        <span class="sep"></span>
+                        <span class="filter" data-show="favorites">Favoritos</span>
+                        <span class="sep searchSep"></span>
+                        <input type="search" name="search" placeholder="Buscar" autocomplete="off">
+                    </div>
+
+                    <div class="items">
+                        <a class="toolLink reparos" title="Reparos domésticos em geral" href="/reparos" data-tool="reparos" data-tags="reparos, conserto, manutenção">
+                            <div class="icon">🔧</div>
+                            <div class="label">Reparos Domésticos</div>
+                        </a>
+
+                        <a class="toolLink pintura" title="Serviços de pintura residencial e comercial" href="/pintura" data-tool="pintura" data-tags="pintura, paredes, teto">
+                            <div class="icon">🎨</div>
+                            <div class="label">Pintura</div>
+                        </a>
+
+                        <a class="toolLink encanamento" title="Serviços de encanamento e hidráulica" href="/encanamento" data-tool="encanamento" data-tags="encanamento, hidráulica, vazamento">
+                            <div class="icon">🚰</div>
+                            <div class="label">Encanamento</div>
+                        </a>
+
+                        <a class="toolLink eletrica" title="Instalações e reparos elétricos" href="/eletrica" data-tool="eletrica" data-tags="elétrica, fiação, tomada">
+                            <div class="icon">⚡</div>
+                            <div class="label">Elétrica</div>
+                        </a>
+
+                        <a class="toolLink montagem" title="Montagem de móveis e equipamentos" href="/montagem" data-tool="montagem" data-tags="montagem, móveis, equipamentos">
+                            <div class="icon">🛠️</div>
+                            <div class="label">Montagem</div>
+                        </a>
+
+                        <a class="toolLink limpeza" title="Serviços de limpeza residencial e comercial" href="/limpeza" data-tool="limpeza" data-tags="limpeza, faxina, higienização">
+                            <div class="icon">🧹</div>
+                            <div class="label">Limpeza</div>
+                        </a>
+
+                        <a class="toolLink jardinagem" title="Cuidados com jardim e áreas externas" href="/jardinagem" data-tool="jardinagem" data-tags="jardinagem, poda, gramado">
+                            <div class="icon">🌿</div>
+                            <div class="label">Jardinagem</div>
+                        </a>
+
+                        <a class="toolLink mudanca" title="Serviços de mudança e transporte" href="/mudanca" data-tool="mudanca" data-tags="mudança, transporte, carregamento">
+                            <div class="icon">🚚</div>
+                            <div class="label">Mudança</div>
+                        </a>
+
+                        <a class="toolLink instalacao" title="Instalação de equipamentos e acessórios" href="/instalacao" data-tool="instalacao" data-tags="instalação, equipamentos, acessórios">
+                            <div class="icon">📺</div>
+                            <div class="label">Instalação</div>
+                        </a>
+
+                        <a class="toolLink pequenosReparos" title="Pequenos reparos e ajustes" href="/pequenos-reparos" data-tool="pequenosReparos" data-tags="pequenos reparos, ajustes, consertos">
+                            <div class="icon">🔩</div>
+                            <div class="label">Pequenos Reparos</div>
+                        </a>
+
+                        <a class="toolLink organizacao" title="Organização de ambientes e espaços" href="/organizacao" data-tool="organizacao" data-tags="organização, arrumação, espaços">
+                            <div class="icon">📦</div>
+                            <div class="label">Organização</div>
+                        </a>
+
+                        <a class="toolLink assistenciaTecnica" title="Assistência técnica para eletrônicos" href="/assistencia-tecnica" data-tool="assistenciaTecnica" data-tags="assistência técnica, eletrônicos, conserto">
+                            <div class="icon">📱</div>
+                            <div class="label">Assistência Técnica</div>
+                        </a>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Organize a Ordem</h3>
-                    <p>Arraste para organizar a sequência</p>
+            </div>
+
+            <div class="mt3">
+                <a class="btn big bold orange" href="/todas-as-ferramentas" style="border-radius:25px; padding:6px 15px;">
+                    <span style="font-size:1.4em;">Todos os serviços</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="infoSection" class="section">
+            <h2 class="title">Por que escolher o FÍGARO?</h2>
+            <div class="content container">
+                <div class="infoCells noInfoIcons">
+                    <div class="cell">
+                        <span class="icon">🔧</span>
+                        <h3 class="title">Ampla gama de serviços</h3>
+                        <p>O FÍGARO oferece uma coleção completa de serviços para sua casa, escritório e muito mais. De pequenos reparos a grandes instalações, temos a solução para suas necessidades.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">👍</span>
+                        <h3 class="title">Fácil de solicitar</h3>
+                        <p>Nossos serviços foram desenvolvidos para serem o mais fáceis de solicitar possível. Uma interface intuitiva e profissionais qualificados garantem a melhor experiência.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">🔒</span>
+                        <h3 class="title">Segurança e confiança</h3>
+                        <p>Todos os nossos profissionais são verificados e qualificados. Sua segurança e satisfação são nossa prioridade máxima em cada serviço prestado.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">⚡</span>
+                        <h3 class="title">Rápido e eficiente</h3>
+                        <p>Entendemos que seu tempo é valioso. Por isso, trabalhamos com agilidade e eficiência para resolver seus problemas no menor tempo possível.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">💼</span>
+                        <h3 class="title">Profissionais qualificados</h3>
+                        <p>Nossa equipe é composta por profissionais experientes e qualificados em suas respectivas áreas, garantindo um serviço de alta qualidade.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">💰</span>
+                        <h3 class="title">Preços justos</h3>
+                        <p>Oferecemos serviços de qualidade a preços acessíveis. Sem surpresas desagradáveis - orçamentos transparentes antes de qualquer trabalho.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">🕒</span>
+                        <h3 class="title">Flexibilidade de horários</h3>
+                        <p>Entendemos que cada cliente tem suas necessidades. Oferecemos horários flexíveis para atender da melhor forma possível.</p>
+                    </div>
+
+                    <div class="cell">
+                        <span class="icon">📞</span>
+                        <h3 class="title">Suporte contínuo</h3>
+                        <p>Estamos sempre disponíveis para tirar dúvidas e oferecer suporte mesmo após a conclusão dos serviços.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Junte e Baixe</h3>
-                    <p>Clique em juntar e faça o download</p>
+
+                <a href="/sobre">
+                    <div class="developer-bio">
+                        <div style="width:50px; height:50px; background-color:#8B0000; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; margin-right:15px;">F</div>
+                        <span>Fundado por uma equipe dedicada a resolver problemas</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="shareSection" class="section">
+            <h2 class="title">Compartilhe nossos serviços</h2>
+            <div class="content container tc">
+                <div id="share" class="enableOnDocReady">
+                    <i class="btn white" title="Compartilhar esta página no Facebook" style="font-size:32px" onclick="openSharePopup('facebook', 'https://figaro-fazdetudo.com')">📘</i>
+                    &nbsp;
+                    <i class="btn white" title="Compartilhe esta página no Instagram" style="font-size:32px" onclick="openSharePopup('instagram', 'https://figaro-fazdetudo.com')">📷</i>
+                    &nbsp;
+                    <i class="btn white" title="Compartilhar esta página no WhatsApp" style="font-size:32px" onclick="openSharePopup('whatsapp', 'https://figaro-fazdetudo.com')">💬</i>
+                </div>
+
+                <div class="mt2">
+                    <div>Ajude nossos serviços a alcançarem mais pessoas!</div>
+                    <div class="mt1">Indique para amigos e familiares.</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="info-section alt">
-        <div class="container">
-            <h2>Por que usar o FIGARO?</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Seguro</h3>
-                    <p>Seus arquivos são processados localmente e não são armazenados em servidores</p>
+        <div id="creatorAlternativeSection" class="section">
+            <h2 class="title">Serviços Corporativos</h2>
+            <div class="subTitle">Soluções especializadas para empresas</div>
+            <div class="content container">
+                <div class="infoCells">
+                    <div class="cell">
+                        <h3 class="title">Manutenção Predial</h3>
+                        <p>Serviços completos de manutenção para edifícios comerciais e corporativos.</p>
+                    </div>
+                    <div class="cell">
+                        <h3 class="title">Limpeza Comercial</h3>
+                        <p>Serviços especializados de limpeza para escritórios e estabelecimentos comerciais.</p>
+                    </div>
+                    <div class="cell">
+                        <h3 class="title">Instalações Corporativas</h3>
+                        <p>Montagem e instalação de mobiliário e equipamentos para empresas.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Rápido</h3>
-                    <p>Processamento instantâneo sem necessidade de upload para servidores</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">💯</div>
-                    <h3>Gratuito</h3>
-                    <p>100% gratuito sem limitações ou versões premium</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Online</h3>
-                    <p>Funciona em qualquer navegador sem necessidade de instalação</p>
+
+                <div class="tc mt2">
+                    <a class="larger rightArrow enableOnDocReady" href="/empresas">Serviços para Empresas</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>FIGARO</h3>
-                    <p>Ferramentas PDF gratuitas e eficientes</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#" onclick="showPrivacy()">Privacidade</a>
-                    <a href="#" onclick="showTerms()">Termos</a>
-                    <a href="#" onclick="showContact()">Contato</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 FIGARO PDF Tools. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay hidden">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h3>Processando seus arquivos...</h3>
-            <p>Isso pode levar alguns segundos</p>
         </div>
     </div>
 
-    <!-- Result Modal -->
-    <div id="resultModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-icon">✅</div>
-            <h3>PDF Criado com Sucesso!</h3>
-            <p>Seu arquivo PDF foi gerado e está pronto para download.</p>
-            <button class="btn-download" id="downloadBtn">📥 Baixar PDF</button>
+    <div style="flex-grow:0">
+        <div id="footer">
+            <div class="container">
+                <div id="footerLinks" class="mb2">
+                    <div class="mcol">
+                        <a rel="noopener" href="/sobre">Sobre nós</a>
+                        <a rel="noopener" href="/faq">Perguntas Frequentes</a>
+                        <a rel="noopener" href="/ajuda">Ajuda</a>
+                        <a rel="noopener" href="/contato">Contato</a>
+                    </div>
+
+                    <div class="mt1">
+                        <a rel="noopener" href="/trabalhe-conosco">Trabalhe Conosco</a>
+                    </div>
+
+                    <div class="mt05">
+                        <a rel="noopener" href="/parceiros">Seja um Parceiro</a>
+                    </div>
+
+                    <div class="mt1 mcol">
+                        <a rel="noopener" href="/aviso-legal">Aviso Legal</a>
+                        <a rel="noopener" href="/termos-de-uso">Termos de uso</a>
+                        <a rel="noopener" href="/politica-de-privacidade">Política de Privacidade</a>
+                    </div>
+                </div>
+
+                <div id="footerSocialLang">
+                    <div id="footerSocial">
+                        <a class="btn white bordered" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/figarofazdetudo/">
+                            <i title="FÍGARO @ Facebook" style="font-size:20px">📘</i>
+                        </a>
+                        <a class="btn white bordered" target="_blank" rel="noopener noreferrer" href="https://instagram.com/figarofazdetudo">
+                            <i title="FÍGARO @ Instagram" style="font-size:20px">📷</i>
+                        </a>
+                        <a class="btn white bordered" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511999999999">
+                            <i title="FÍGARO @ WhatsApp" style="font-size:20px">💬</i>
+                        </a>
+                    </div>
+
+                    <div id="footerLang">
+                        <div id="footerLangSwitch" class="linkLock">
+                            <ul class="bordered">
+                                <li class="selected"><a href="/">Português</a></li>
+                                <li><a href="/en/">English</a></li>
+                                <li><a href="/es/">Español</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="footerUrl"><a href="/">figaro-fazdetudo.com</a></div>
+
+                <div id="footerNote" class="mcol">
+                    <span>© 2025 FÍGARO - FAZ DE TUDO</span>
+                    <span class="mhide">—</span>
+                    <span>FAZEMOS <span class="love">TUDO</span> POR VOCÊ</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Configuração principal
-        class FigaroPDFMerger {
-            constructor() {
-                this.files = [];
-                this.selectedPages = [];
-                this.isProcessing = false;
-                this.init();
-            }
-
-            init() {
-                this.initializeEventListeners();
-                this.loadTheme();
-                this.initializeDropzone();
-            }
-
-            // Inicialização de eventos
-            initializeEventListeners() {
-                // Seleção de arquivos
-                document.getElementById('selectFiles').addEventListener('click', () => {
-                    document.getElementById('fileInput').click();
-                });
-
-                document.getElementById('fileInput').addEventListener('change', (e) => {
-                    this.handleFileSelection(e.target.files);
-                });
-
-                // Modo página
-                document.getElementById('pageMode').addEventListener('change', (e) => {
-                    this.togglePageMode(e.target.checked);
-                });
-
-                // Prevenção de comportamento padrão do dropzone
-                const dropzone = document.getElementById('dropzone');
-                dropzone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    dropzone.classList.add('drag-over');
-                });
-
-                dropzone.addEventListener('dragleave', (e) => {
-                    if (!dropzone.contains(e.relatedTarget)) {
-                        dropzone.classList.remove('drag-over');
-                    }
-                });
-
-                dropzone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    dropzone.classList.remove('drag-over');
-                    this.handleFileSelection(e.dataTransfer.files);
-                });
-
-                // Teclas de atalho
-                document.addEventListener('keydown', (e) => {
-                    if (e.ctrlKey && e.key === 'k') {
-                        e.preventDefault();
-                        document.getElementById('fileInput').click();
-                    }
-                });
-            }
-
-            // Inicialização do dropzone
-            initializeDropzone() {
-                const dropzone = document.getElementById('dropzone');
-                
-                // Adiciona feedback visual durante o drag
-                ['dragenter', 'dragover'].forEach(eventName => {
-                    dropzone.addEventListener(eventName, this.highlightDropzone, false);
-                });
-
-                ['dragleave', 'drop'].forEach(eventName => {
-                    dropzone.addEventListener(eventName, this.unhighlightDropzone, false);
-                });
-            }
-
-            highlightDropzone(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                document.getElementById('dropzone').classList.add('drag-over');
-            }
-
-            unhighlightDropzone(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                document.getElementById('dropzone').classList.remove('drag-over');
-            }
-
-            // Manipulação de arquivos
-            async handleFileSelection(fileList) {
-                const files = Array.from(fileList);
-                
-                // Filtra apenas arquivos suportados
-                const supportedFiles = files.filter(file => 
-                    this.isFileSupported(file)
-                );
-
-                if (supportedFiles.length === 0) {
-                    this.showError('Nenhum arquivo suportado foi selecionado.');
-                    return;
-                }
-
-                // Adiciona arquivos à lista
-                for (const file of supportedFiles) {
-                    await this.addFile(file);
-                }
-
-                this.updateUI();
-            }
-
-            isFileSupported(file) {
-                const supportedTypes = [
-                    'application/pdf',
-                    'application/msword',
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                    'image/jpeg',
-                    'image/png',
-                    'image/jpg'
-                ];
-                
-                const supportedExtensions = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'];
-                const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
-
-                return supportedTypes.includes(file.type) || 
-                       supportedExtensions.includes(fileExtension);
-            }
-
-            async addFile(file) {
-                const fileId = this.generateFileId();
-                const fileData = {
-                    id: fileId,
-                    file: file,
-                    name: file.name,
-                    size: file.size,
-                    type: file.type,
-                    uploadDate: new Date(),
-                    pages: []
-                };
-
-                // Simula extração de páginas (em uma implementação real, usaria pdf.js)
-                if (file.type === 'application/pdf') {
-                    fileData.pages = await this.extractPdfPages(file);
-                } else {
-                    fileData.pages = [this.createPagePreview(file)];
-                }
-
-                this.files.push(fileData);
-            }
-
-            async extractPdfPages(pdfFile) {
-                // Simulação - em uma implementação real, usaria pdf.js
-                return new Promise((resolve) => {
-                    setTimeout(() => {
-                        const pageCount = Math.floor(Math.random() * 10) + 1; // Simula 1-10 páginas
-                        const pages = [];
-                        
-                        for (let i = 1; i <= pageCount; i++) {
-                            pages.push({
-                                number: i,
-                                thumbnail: this.createPageThumbnail(pdfFile.name, i),
-                                selected: false
-                            });
-                        }
-                        
-                        resolve(pages);
-                    }, 500);
-                });
-            }
-
-            createPagePreview(file) {
-                return {
-                    number: 1,
-                    thumbnail: this.createFileThumbnail(file),
-                    selected: false
-                };
-            }
-
-            createPageThumbnail(fileName, pageNumber) {
-                // Simula uma miniatura de página
-                return `📄 Página ${pageNumber} de ${fileName}`;
-            }
-
-            createFileThumbnail(file) {
-                const type = file.type.split('/')[0];
-                const icons = {
-                    'image': '🖼️',
-                    'application': '📄',
-                    'text': '📝'
-                };
-                
-                return `${icons[type] || '📁'} ${file.name}`;
-            }
-
-            // Interface do usuário
-            updateUI() {
-                this.updateFileList();
-                this.updateOptionsSection();
-                this.updateActionSection();
-                this.updateMergeInfo();
-            }
-
-            updateFileList() {
-                const fileListContainer = document.getElementById('fileListContainer');
-                const fileListSection = document.getElementById('fileList');
-                
-                fileListContainer.innerHTML = '';
-                
-                if (this.files.length === 0) {
-                    fileListSection.classList.add('hidden');
-                    return;
-                }
-
-                fileListSection.classList.remove('hidden');
-
-                this.files.forEach((fileData, index) => {
-                    const fileElement = this.createFileElement(fileData, index);
-                    fileListContainer.appendChild(fileElement);
-                });
-            }
-
-            createFileElement(fileData, index) {
-                const fileElement = document.createElement('div');
-                fileElement.className = 'file-item';
-                fileElement.draggable = true;
-                fileElement.dataset.fileId = fileData.id;
-
-                fileElement.innerHTML = `
-                    <div class="file-info">
-                        <div class="file-icon">${this.getFileIcon(fileData.type)}</div>
-                        <div class="file-details">
-                            <h5>${fileData.name}</h5>
-                            <small>${this.formatFileSize(fileData.size)} • ${fileData.pages.length} página(s)</small>
-                        </div>
-                    </div>
-                    <div class="file-actions">
-                        <button class="file-action-btn" onclick="figaro.moveFile(${index}, -1)" title="Mover para cima">
-                            <span class="icon-move"></span>
-                        </button>
-                        <button class="file-action-btn" onclick="figaro.moveFile(${index}, 1)" title="Mover para baixo">
-                            <span class="icon-move" style="transform: rotate(180deg)"></span>
-                        </button>
-                        <button class="file-action-btn" onclick="figaro.removeFile('${fileData.id}')" title="Remover arquivo">
-                            <span class="icon-delete"></span>
-                        </button>
-                    </div>
-                `;
-
-                // Configura drag and drop
-                this.setupFileDragAndDrop(fileElement, index);
-
-                return fileElement;
-            }
-
-            getFileIcon(fileType) {
-                const icons = {
-                    'application/pdf': '📕',
-                    'application/msword': '📘',
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '📘',
-                    'image/': '🖼️'
-                };
-
-                for (const [type, icon] of Object.entries(icons)) {
-                    if (fileType.startsWith(type)) {
-                        return icon;
-                    }
-                }
-
-                return '📁';
-            }
-
-            setupFileDragAndDrop(element, index) {
-                element.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', index);
-                    element.classList.add('dragging');
-                });
-
-                element.addEventListener('dragend', () => {
-                    element.classList.remove('dragging');
-                });
-
-                element.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                });
-
-                element.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
-                    const toIndex = index;
-                    
-                    if (fromIndex !== toIndex) {
-                        this.moveFile(fromIndex, toIndex - fromIndex);
-                    }
-                });
-            }
-
-            updateOptionsSection() {
-                const optionsSection = document.getElementById('options');
-                
-                if (this.files.length > 0) {
-                    optionsSection.classList.remove('hidden');
-                } else {
-                    optionsSection.classList.add('hidden');
-                }
-            }
-
-            updateActionSection() {
-                const actionSection = document.getElementById('actionSection');
-                
-                if (this.files.length >= 1) {
-                    actionSection.classList.remove('hidden');
-                } else {
-                    actionSection.classList.add('hidden');
-                }
-            }
-
-            updateMergeInfo() {
-                const mergeInfo = document.getElementById('mergeInfo');
-                const totalFiles = this.files.length;
-                const totalPages = this.files.reduce((sum, file) => sum + file.pages.length, 0);
-
-                mergeInfo.textContent = `${totalFiles} arquivo(s) • ${totalPages} página(s) total`;
-            }
-
-            // Operações de arquivos
-            moveFile(index, direction) {
-                const newIndex = index + direction;
-                
-                if (newIndex >= 0 && newIndex < this.files.length) {
-                    // Move o arquivo no array
-                    const [movedFile] = this.files.splice(index, 1);
-                    this.files.splice(newIndex, 0, movedFile);
-                    
-                    this.updateUI();
-                    this.showNotification(`Arquivo movido para a posição ${newIndex + 1}`);
-                }
-            }
-
-            removeFile(fileId) {
-                this.files = this.files.filter(file => file.id !== fileId);
-                this.updateUI();
-                this.showNotification('Arquivo removido');
-            }
-
-            sortFiles(order) {
-                this.files.sort((a, b) => {
-                    const nameA = a.name.toLowerCase();
-                    const nameB = b.name.toLowerCase();
-                    
-                    if (order === 'asc') {
-                        return nameA.localeCompare(nameB);
-                    } else {
-                        return nameB.localeCompare(nameA);
-                    }
-                });
-                
-                this.updateUI();
-                this.showNotification(`Arquivos ordenados ${order === 'asc' ? 'A-Z' : 'Z-A'}`);
-            }
-
-            clearAllFiles() {
-                if (confirm('Tem certeza que deseja remover todos os arquivos?')) {
-                    this.files = [];
-                    this.selectedPages = [];
-                    this.updateUI();
-                    this.showNotification('Todos os arquivos foram removidos');
-                }
-            }
-
-            // Modo página
-            togglePageMode(enabled) {
-                const pageModeSections = document.getElementById('pageModeSections');
-                
-                if (enabled) {
-                    pageModeSections.classList.remove('hidden');
-                    this.initializePageMode();
-                } else {
-                    pageModeSections.classList.add('hidden');
-                    this.selectedPages = [];
-                }
-                
-                this.updateMergeInfo();
-            }
-
-            initializePageMode() {
-                this.updatePageSelection();
-                this.updatePageOrder();
-            }
-
-            updatePageSelection() {
-                const pageSelection = document.getElementById('pageSelection');
-                pageSelection.innerHTML = '';
-
-                this.files.forEach(fileData => {
-                    fileData.pages.forEach(page => {
-                        const pageElement = this.createPageElement(fileData, page);
-                        pageSelection.appendChild(pageElement);
-                    });
-                });
-            }
-
-            createPageElement(fileData, page) {
-                const pageElement = document.createElement('div');
-                pageElement.className = `page-thumbnail ${page.selected ? 'selected' : ''}`;
-                pageElement.innerHTML = `
-                    <div>${page.thumbnail}</div>
-                    <div class="page-number">${fileData.name} - Pág. ${page.number}</div>
-                `;
-
-                pageElement.addEventListener('click', () => {
-                    this.togglePageSelection(fileData, page);
-                });
-
-                return pageElement;
-            }
-
-            togglePageSelection(fileData, page) {
-                page.selected = !page.selected;
-                
-                if (page.selected) {
-                    this.selectedPages.push({
-                        fileId: fileData.id,
-                        file: fileData,
-                        page: page
-                    });
-                } else {
-                    this.selectedPages = this.selectedPages.filter(selectedPage => 
-                        !(selectedPage.fileId === fileData.id && selectedPage.page.number === page.number)
-                    );
-                }
-                
-                this.updatePageSelection();
-                this.updatePageOrder();
-                this.updateMergeInfo();
-            }
-
-            updatePageOrder() {
-                const pageOrder = document.getElementById('pageOrder');
-                pageOrder.innerHTML = '';
-
-                this.selectedPages.forEach((selectedPage, index) => {
-                    const pageElement = document.createElement('div');
-                    pageElement.className = 'page-thumbnail selected';
-                    pageElement.draggable = true;
-                    pageElement.innerHTML = `
-                        <div>${selectedPage.page.thumbnail}</div>
-                        <div class="page-number">Posição ${index + 1}</div>
-                    `;
-
-                    this.setupPageDragAndDrop(pageElement, index);
-                    pageOrder.appendChild(pageElement);
-                });
-            }
-
-            setupPageDragAndDrop(element, index) {
-                element.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', index);
-                });
-
-                element.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                });
-
-                element.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
-                    const toIndex = index;
-                    
-                    if (fromIndex !== toIndex) {
-                        this.moveSelectedPage(fromIndex, toIndex);
-                    }
-                });
-            }
-
-            moveSelectedPage(fromIndex, toIndex) {
-                const [movedPage] = this.selectedPages.splice(fromIndex, 1);
-                this.selectedPages.splice(toIndex, 0, movedPage);
-                
-                this.updatePageOrder();
-            }
-
-            // Processamento de PDF
-            async mergeFiles() {
-                if (this.isProcessing) return;
-
-                const isPageMode = document.getElementById('pageMode').checked;
-                const filesToProcess = isPageMode ? this.selectedPages : this.files;
-
-                if (filesToProcess.length === 0) {
-                    this.showError(isPageMode ? 
-                        'Selecione pelo menos uma página para continuar.' : 
-                        'Adicione pelo menos um arquivo para continuar.'
-                    );
-                    return;
-                }
-
-                this.isProcessing = true;
-                this.showLoading();
-
-                try {
-                    // Simula o processamento
-                    await this.simulateProcessing(filesToProcess);
-                    
-                    // Em uma implementação real, aqui usaria uma biblioteca como pdf-lib
-                    const mergedPdf = await this.createMergedPdf(filesToProcess);
-                    
-                    this.hideLoading();
-                    this.showResult(mergedPdf);
-                    
-                } catch (error) {
-                    this.hideLoading();
-                    this.showError('Erro ao processar arquivos: ' + error.message);
-                }
-
-                this.isProcessing = false;
-            }
-
-            async simulateProcessing(files) {
-                return new Promise(resolve => {
-                    let progress = 0;
-                    const totalSteps = 100;
-                    const stepTime = 30;
-
-                    const interval = setInterval(() => {
-                        progress += 1;
-                        // Atualiza progresso aqui se tiver barra de progresso
-                        
-                        if (progress >= totalSteps) {
-                            clearInterval(interval);
-                            resolve();
-                        }
-                    }, stepTime);
-                });
-            }
-
-            async createMergedPdf(filesToProcess) {
-                // Em uma implementação real, usaria pdf-lib ou similar
-                // Esta é uma simulação que cria um blob
-                const content = `PDF FIGARO - Arquivos combinados:\n\n${
-                    filesToProcess.map((item, index) => 
-                        `${index + 1}. ${item.file?.name || item.file.name}`
-                    ).join('\n')
-                }`;
-
-                return new Blob([content], { type: 'application/pdf' });
-            }
-
-            // Interface do usuário - Utilitários
-            showLoading() {
-                document.getElementById('loadingOverlay').classList.remove('hidden');
-            }
-
-            hideLoading() {
-                document.getElementById('loadingOverlay').classList.add('hidden');
-            }
-
-            showResult(pdfBlob) {
-                const resultModal = document.getElementById('resultModal');
-                const downloadBtn = document.getElementById('downloadBtn');
-                
-                // Configura o download
-                const url = URL.createObjectURL(pdfBlob);
-                downloadBtn.onclick = () => {
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `figaro-merged-${new Date().getTime()}.pdf`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                };
-
-                resultModal.classList.remove('hidden');
-            }
-
-            closeModal() {
-                document.getElementById('resultModal').classList.add('hidden');
-            }
-
-            showError(message) {
-                alert(`Erro: ${message}`);
-            }
-
-            showNotification(message) {
-                // Poderia usar um sistema de notificação mais sofisticado
-                console.log('Notification:', message);
-            }
-
-            // Utilitários
-            generateFileId() {
-                return 'file_' + Math.random().toString(36).substr(2, 9);
-            }
-
-            formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-            }
-
-            // Tema
-            loadTheme() {
-                const savedTheme = localStorage.getItem('figaro-theme') || 'light';
-                this.setTheme(savedTheme);
-            }
-
-            toggleTheme() {
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                this.setTheme(newTheme);
-                localStorage.setItem('figaro-theme', newTheme);
-            }
-
-            setTheme(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
-        }
-
-        // Inicialização da aplicação
-        const figaro = new FigaroPDFMerger();
-
-        // Funções globais para os event listeners do HTML
+        // Função para alternar tema
         function toggleTheme() {
-            figaro.toggleTheme();
+            const html = document.documentElement;
+            const currentTheme = html.className;
+            
+            if (currentTheme.includes('redTheme')) {
+                html.className = currentTheme.replace('redTheme', 'darkTheme');
+            } else if (currentTheme.includes('darkTheme')) {
+                html.className = currentTheme.replace('darkTheme', 'orangeTheme');
+            } else {
+                html.className = currentTheme.replace('orangeTheme', 'redTheme');
+            }
+            
+            // Salvar preferência
+            try {
+                localStorage.setItem('themeClass', html.className.split(' ')[0]);
+            } catch(e) {
+                console.log(e);
+            }
         }
 
-        function sortFiles(order) {
-            figaro.sortFiles(order);
-        }
+        // Aplicar tema salvo
+        (function() {
+            try {
+                let themeClass = localStorage.getItem('themeClass');
+                if(!themeClass && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    themeClass = 'darkTheme';
+                }
+                if(themeClass) {
+                    const themesTag = document.querySelector('meta[name="themes"]');
+                    const themes = themesTag ? themesTag.content : false;
+                    if(themes) {
+                        const available = themes.replace(' ', '').split(',').indexOf(themeClass) >= 0;
+                        if(available) {
+                            const html = document.documentElement;
+                            const cls = themeClass + ' ' + html.className.replace(/[a-zA-Z0-9]+Theme */, '');
+                            html.className = cls.replace(/^\s+|\s+$/gm, '');
+                        }
+                    }
+                }
+            } catch(e) {
+                console.log(e);
+            }
+        })();
 
-        function clearAllFiles() {
-            figaro.clearAllFiles();
-        }
+        // Sistema de favoritos
+        (function() {
+            const favorites = JSON.parse(localStorage.getItem('toolFavorites')) || {};
+            
+            const updateClass = function(tid, e) {
+                e = e || document.querySelector('.toolSelect .toolLink.' + tid);
+                if (e) {
+                    const favstar = e.querySelector('.favstar i');
+                    if (favstar) {
+                        favstar.textContent = favorites[tid] ? '★' : '☆';
+                    }
+                    e.classList.toggle('favorite', !!favorites[tid]);
+                }
+            };
+            
+            document.querySelector('.toolSelect').classList.add('hasFavorites');
+            
+            document.querySelectorAll('.toolSelect .toolLink').forEach(function(e) {
+                const toolId = e.getAttribute('data-tool');
+                if(!toolId) return;
 
-        function mergeFiles() {
-            figaro.mergeFiles();
-        }
+                const elem = document.createElement('div');
+                elem.className = 'favstar';
+                elem.title = 'Alternar status de favorito';
+                elem.innerHTML = '<i>☆</i>';
+                
+                elem.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    favorites[toolId] = !favorites[toolId];
+                    localStorage.setItem('toolFavorites', JSON.stringify(favorites));
+                    updateClass(toolId, e);
+                    return false;
+                });
+                
+                e.appendChild(elem);
+                updateClass(toolId, e);
+            });
+        })();
 
-        function closeModal() {
-            figaro.closeModal();
-        }
+        // Filtros e busca
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyFilter = function(filter) {
+                const p = this.closest('.toolSelect');
+                const toggle = document.body.clientWidth >= 1200;
 
-        function showPrivacy() {
-            alert('Política de Privacidade: Seus arquivos são processados localmente e não são enviados para nossos servidores.');
-        }
+                p.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+                p.querySelector('.filter[data-show="'+ filter +'"]').classList.add('active');
+                p.querySelectorAll('.toolLink').forEach(link => {
+                    link.style.opacity = '1';
+                    link.style.display = '';
+                });
+                p.querySelector('input[name="search"]').value = '';
 
-        function showTerms() {
-            alert('Termos de Uso: Use esta ferramenta de forma responsável. Não nos responsabilizamos pelo conteúdo dos arquivos processados.');
-        }
+                if(filter === 'lastUsed') {
+                    const limit = 6;
+                    const lastUsedTools = JSON.parse(localStorage.getItem('lastUsedTools')) || [];
+                    p.querySelectorAll('.toolLink').forEach(link => {
+                        link.style.opacity = '0.1';
+                        if (toggle) link.style.display = 'none';
+                    });
+                    
+                    lastUsedTools.slice(0, limit).forEach(toolId => {
+                        const tool = p.querySelector('.toolLink.' + toolId);
+                        if (tool) {
+                            tool.style.opacity = '1';
+                            tool.style.display = '';
+                        }
+                    });
+                }
+                else if(filter === 'favorites') {
+                    const favorites = JSON.parse(localStorage.getItem('toolFavorites')) || {};
+                    p.querySelectorAll('.toolLink').forEach(link => {
+                        link.style.opacity = '0.1';
+                        if (toggle) link.style.display = 'none';
+                    });
+                    
+                    Object.keys(favorites).forEach(toolId => {
+                        if (favorites[toolId]) {
+                            const tool = p.querySelector('.toolLink.' + toolId);
+                            if (tool) {
+                                tool.style.opacity = '1';
+                                tool.style.display = '';
+                            }
+                        }
+                    });
+                }
+            };
 
-        function showContact() {
-            alert('Contato: suporte@figaro-pdf.com');
+            document.querySelectorAll('.toolSelect .filter').forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const filterType = this.getAttribute('data-show');
+                    applyFilter.call(this, filterType);
+                });
+            });
+
+            let trackTimeout = null;
+            document.querySelectorAll('.toolSelect .filters input[name="search"]').forEach(input => {
+                input.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    if(!searchTerm) {
+                        applyFilter.call(this, 'all');
+                        return;
+                    }
+
+                    const toggle = document.body.clientWidth >= 1200;
+                    const p = this.closest('.toolSelect');
+
+                    p.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+                    p.querySelectorAll('.toolLink').forEach(link => {
+                        const tags = (link.getAttribute('data-tags') || '') + ', ' + link.querySelector('.label').textContent;
+                        const hide = tags.toLowerCase().indexOf(searchTerm) === -1;
+                        link.style.opacity = hide ? '0.1' : '1';
+                        link.style.display = (toggle && hide) ? 'none' : '';
+                    });
+
+                    clearTimeout(trackTimeout);
+                    trackTimeout = setTimeout(function() {
+                        if(input.value) {
+                            console.log('Busca realizada:', input.value);
+                        }
+                    }, 1000);
+                });
+            });
+
+            // Registrar uso de ferramentas
+            document.querySelectorAll('.toolSelect .toolLink').forEach(link => {
+                link.addEventListener('click', function() {
+                    const toolId = this.getAttribute('data-tool');
+                    if (toolId) {
+                        const lastUsedTools = JSON.parse(localStorage.getItem('lastUsedTools')) || [];
+                        const index = lastUsedTools.indexOf(toolId);
+                        
+                        if (index !== -1) {
+                            lastUsedTools.splice(index, 1);
+                        }
+                        
+                        lastUsedTools.unshift(toolId);
+                        
+                        // Manter apenas os últimos 10
+                        if (lastUsedTools.length > 10) {
+                            lastUsedTools.pop();
+                        }
+                        
+                        localStorage.setItem('lastUsedTools', JSON.stringify(lastUsedTools));
+                    }
+                    return true;
+                });
+            });
+        });
+
+        // Função para compartilhamento
+        function openSharePopup(platform, url) {
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Conheça o FÍGARO - FAZ DE TUDO')}`;
+                    break;
+                case 'linkedIn':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent('Conheça o FÍGARO - FAZ DE TUDO: ' + url)}`;
+                    break;
+                case 'instagram':
+                    // Instagram não tem API de compartilhamento direto
+                    alert('Compartilhe manualmente no Instagram!');
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank', 'width=600,height=400');
         }
     </script>
 </body>
