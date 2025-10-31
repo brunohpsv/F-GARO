@@ -894,11 +894,11 @@
             <div id="toolSections">
                 <!-- Juntar PDF -->
                 <div id="merge-pdf" class="tool-section active">
-                    <div id="dropzone" class="dropzone">
+                    <div class="dropzone">
                         <div class="dropzone-content">
                             <div class="dropzone-icon">📁</div>
-                            <h3>Solte seus arquivos aqui</h3>
-                            <p>ou clique para selecionar</p>
+                            <h3>Selecione os PDFs para juntar</h3>
+                            <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectFiles">Selecionar Arquivos</button>
                             <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
                             <div class="file-info">
@@ -948,6 +948,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectExtractFile">Selecionar PDF</button>
                             <input type="file" id="extractFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="extractFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="extractFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -976,6 +990,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectPdfToWord">Selecionar PDF</button>
                             <input type="file" id="pdfToWordInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="pdfToWordFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="pdfToWordFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -996,6 +1024,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectImagesToPdf">Selecionar Imagens</button>
                             <input type="file" id="imagesToPdfInput" multiple accept=".jpg,.jpeg,.png" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: JPG, JPEG, PNG</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte os arquivos aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="imagesToPdfFileList" class="file-list hidden">
+                        <h4>Arquivos Selecionados</h4>
+                        <div class="file-list-container" id="imagesToPdfFileListContainer">
+                            <!-- Files will be listed here -->
                         </div>
                     </div>
 
@@ -1016,6 +1058,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectRotateFile">Selecionar PDF</button>
                             <input type="file" id="rotateFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="rotateFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="rotateFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1052,6 +1108,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectRemoveFile">Selecionar PDF</button>
                             <input type="file" id="removeFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="removeFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="removeFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1080,6 +1150,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectReorderFile">Selecionar PDF</button>
                             <input type="file" id="reorderFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="reorderFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="reorderFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1108,6 +1192,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectWatermarkFile">Selecionar PDF</button>
                             <input type="file" id="watermarkFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="watermarkFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="watermarkFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1146,6 +1244,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectProtectFile">Selecionar PDF</button>
                             <input type="file" id="protectFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="protectFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="protectFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1178,6 +1290,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectUnlockFile">Selecionar PDF</button>
                             <input type="file" id="unlockFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="unlockFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="unlockFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1206,6 +1332,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectCompressFile">Selecionar PDF</button>
                             <input type="file" id="compressFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="compressFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="compressFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1238,6 +1378,20 @@
                             <p>ou arraste e solte aqui</p>
                             <button class="btn-primary" id="selectOcrFile">Selecionar PDF</button>
                             <input type="file" id="ocrFileInput" accept=".pdf" style="display: none;">
+                            <div class="file-info">
+                                <small>Suporte: PDF</small>
+                            </div>
+                        </div>
+                        <div class="dropzone-overlay">
+                            <div class="overlay-content">Solte o arquivo aqui!</div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="ocrFileList" class="file-list hidden">
+                        <h4>Arquivo Selecionado</h4>
+                        <div class="file-list-container" id="ocrFileListContainer">
+                            <!-- File will be listed here -->
                         </div>
                     </div>
 
@@ -1245,26 +1399,6 @@
                         <button class="btn-merge" onclick="ocrPDF()">
                             <span class="icon-merge"></span>
                             APLICAR OCR
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Template para outras ferramentas -->
-                <div id="template-tool" class="tool-section">
-                    <div class="dropzone">
-                        <div class="dropzone-content">
-                            <div class="dropzone-icon">📁</div>
-                            <h3>Selecione o arquivo</h3>
-                            <p>ou arraste e solte aqui</p>
-                            <button class="btn-primary" id="selectTemplateFile">Selecionar Arquivo</button>
-                            <input type="file" id="templateFileInput" accept=".pdf" style="display: none;">
-                        </div>
-                    </div>
-
-                    <div class="action-section">
-                        <button class="btn-merge" onclick="processTemplate()">
-                            <span class="icon-merge"></span>
-                            PROCESSAR
                         </button>
                     </div>
                 </div>
@@ -1471,22 +1605,16 @@
                 const toolSection = document.getElementById(toolId);
                 if (toolSection) {
                     toolSection.classList.add('active');
-                } else {
-                    // Se não houver uma seção específica, usa o template
-                    const template = document.getElementById('template-tool');
-                    template.classList.add('active');
-                    
-                    // Atualiza o título e descrição do template
-                    const tool = this.tools.find(t => t.id === toolId);
-                    if (tool) {
-                        template.querySelector('h3').textContent = tool.name;
-                    }
                 }
                 
                 this.currentTool = toolId;
                 
                 // Atualiza o botão de ação baseado na ferramenta selecionada
                 this.updateActionButton(toolId);
+                
+                // Limpa os arquivos quando muda de ferramenta
+                this.files = [];
+                this.updateUI();
             }
 
             updateActionButton(toolId) {
@@ -1535,44 +1663,88 @@
                     document.getElementById('extractFileInput').click();
                 });
 
+                document.getElementById('extractFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'extract');
+                });
+
                 document.getElementById('selectPdfToWord').addEventListener('click', () => {
                     document.getElementById('pdfToWordInput').click();
+                });
+
+                document.getElementById('pdfToWordInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'pdfToWord');
                 });
 
                 document.getElementById('selectImagesToPdf').addEventListener('click', () => {
                     document.getElementById('imagesToPdfInput').click();
                 });
 
+                document.getElementById('imagesToPdfInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'imagesToPdf');
+                });
+
                 document.getElementById('selectRotateFile').addEventListener('click', () => {
                     document.getElementById('rotateFileInput').click();
+                });
+
+                document.getElementById('rotateFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'rotate');
                 });
 
                 document.getElementById('selectRemoveFile').addEventListener('click', () => {
                     document.getElementById('removeFileInput').click();
                 });
 
+                document.getElementById('removeFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'remove');
+                });
+
                 document.getElementById('selectReorderFile').addEventListener('click', () => {
                     document.getElementById('reorderFileInput').click();
+                });
+
+                document.getElementById('reorderFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'reorder');
                 });
 
                 document.getElementById('selectWatermarkFile').addEventListener('click', () => {
                     document.getElementById('watermarkFileInput').click();
                 });
 
+                document.getElementById('watermarkFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'watermark');
+                });
+
                 document.getElementById('selectProtectFile').addEventListener('click', () => {
                     document.getElementById('protectFileInput').click();
+                });
+
+                document.getElementById('protectFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'protect');
                 });
 
                 document.getElementById('selectUnlockFile').addEventListener('click', () => {
                     document.getElementById('unlockFileInput').click();
                 });
 
+                document.getElementById('unlockFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'unlock');
+                });
+
                 document.getElementById('selectCompressFile').addEventListener('click', () => {
                     document.getElementById('compressFileInput').click();
                 });
 
+                document.getElementById('compressFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'compress');
+                });
+
                 document.getElementById('selectOcrFile').addEventListener('click', () => {
                     document.getElementById('ocrFileInput').click();
+                });
+
+                document.getElementById('ocrFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelection(e.target.files, 'ocr');
                 });
 
                 // Teclas de atalho
@@ -1611,17 +1783,22 @@
             }
 
             // Manipulação de arquivos
-            async handleFileSelection(fileList) {
+            async handleFileSelection(fileList, toolType = 'merge') {
                 const files = Array.from(fileList);
                 
                 // Filtra apenas arquivos suportados
                 const supportedFiles = files.filter(file => 
-                    this.isFileSupported(file)
+                    this.isFileSupported(file, toolType)
                 );
 
                 if (supportedFiles.length === 0) {
-                    this.showError('Nenhum arquivo PDF foi selecionado.');
+                    this.showError('Nenhum arquivo suportado foi selecionado.');
                     return;
+                }
+
+                // Limpa arquivos anteriores se não for a ferramenta de juntar
+                if (toolType !== 'merge' && toolType !== 'imagesToPdf') {
+                    this.files = [];
                 }
 
                 // Adiciona arquivos à lista
@@ -1629,11 +1806,18 @@
                     await this.addFile(file);
                 }
 
-                this.updateUI();
+                this.updateUI(toolType);
             }
 
-            isFileSupported(file) {
-                return file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+            isFileSupported(file, toolType) {
+                if (toolType === 'imagesToPdf') {
+                    return file.type.startsWith('image/') || 
+                           file.name.toLowerCase().endsWith('.jpg') || 
+                           file.name.toLowerCase().endsWith('.jpeg') || 
+                           file.name.toLowerCase().endsWith('.png');
+                } else {
+                    return file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                }
             }
 
             async addFile(file) {
@@ -1651,15 +1835,24 @@
             }
 
             // Interface do usuário
-            updateUI() {
-                this.updateFileList();
-                this.updateActionSection();
-                this.updateMergeInfo();
+            updateUI(toolType = 'merge') {
+                this.updateFileList(toolType);
+                this.updateActionSection(toolType);
+                this.updateMergeInfo(toolType);
             }
 
-            updateFileList() {
-                const fileListContainer = document.getElementById('fileListContainer');
-                const fileListSection = document.getElementById('fileList');
+            updateFileList(toolType) {
+                let fileListContainer, fileListSection;
+                
+                if (toolType === 'merge') {
+                    fileListContainer = document.getElementById('fileListContainer');
+                    fileListSection = document.getElementById('fileList');
+                } else {
+                    fileListContainer = document.getElementById(`${toolType}FileListContainer`);
+                    fileListSection = document.getElementById(`${toolType}FileList`);
+                }
+                
+                if (!fileListContainer || !fileListSection) return;
                 
                 fileListContainer.innerHTML = '';
                 
@@ -1671,12 +1864,12 @@
                 fileListSection.classList.remove('hidden');
 
                 this.files.forEach((fileData, index) => {
-                    const fileElement = this.createFileElement(fileData, index);
+                    const fileElement = this.createFileElement(fileData, index, toolType);
                     fileListContainer.appendChild(fileElement);
                 });
             }
 
-            createFileElement(fileData, index) {
+            createFileElement(fileData, index, toolType) {
                 const fileElement = document.createElement('div');
                 fileElement.className = 'file-item';
                 fileElement.draggable = true;
@@ -1691,29 +1884,36 @@
                         </div>
                     </div>
                     <div class="file-actions">
-                        <button class="file-action-btn" onclick="figaro.moveFile(${index}, -1)" title="Mover para cima">
-                            <span class="icon-move"></span>
-                        </button>
-                        <button class="file-action-btn" onclick="figaro.moveFile(${index}, 1)" title="Mover para baixo">
-                            <span class="icon-move" style="transform: rotate(180deg)"></span>
-                        </button>
-                        <button class="file-action-btn" onclick="figaro.removeFile('${fileData.id}')" title="Remover arquivo">
+                        ${toolType === 'merge' || toolType === 'imagesToPdf' ? `
+                            <button class="file-action-btn" onclick="figaro.moveFile(${index}, -1, '${toolType}')" title="Mover para cima">
+                                <span class="icon-move"></span>
+                            </button>
+                            <button class="file-action-btn" onclick="figaro.moveFile(${index}, 1, '${toolType}')" title="Mover para baixo">
+                                <span class="icon-move" style="transform: rotate(180deg)"></span>
+                            </button>
+                        ` : ''}
+                        <button class="file-action-btn" onclick="figaro.removeFile('${fileData.id}', '${toolType}')" title="Remover arquivo">
                             <span class="icon-delete"></span>
                         </button>
                     </div>
                 `;
 
-                // Configura drag and drop
-                this.setupFileDragAndDrop(fileElement, index);
+                // Configura drag and drop apenas para ferramentas que permitem múltiplos arquivos
+                if (toolType === 'merge' || toolType === 'imagesToPdf') {
+                    this.setupFileDragAndDrop(fileElement, index, toolType);
+                }
 
                 return fileElement;
             }
 
             getFileIcon(fileType) {
+                if (fileType.startsWith('image/')) {
+                    return '🖼️';
+                }
                 return '📕';
             }
 
-            setupFileDragAndDrop(element, index) {
+            setupFileDragAndDrop(element, index, toolType) {
                 element.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', index);
                     element.classList.add('dragging');
@@ -1733,13 +1933,21 @@
                     const toIndex = index;
                     
                     if (fromIndex !== toIndex) {
-                        this.moveFile(fromIndex, toIndex - fromIndex);
+                        this.moveFile(fromIndex, toIndex - fromIndex, toolType);
                     }
                 });
             }
 
-            updateActionSection() {
-                const actionSection = document.getElementById('actionSection');
+            updateActionSection(toolType) {
+                let actionSection;
+                
+                if (toolType === 'merge') {
+                    actionSection = document.getElementById('actionSection');
+                } else {
+                    actionSection = document.querySelector(`#${toolType}-pdf .action-section`);
+                }
+                
+                if (!actionSection) return;
                 
                 if (this.files.length >= 1) {
                     actionSection.classList.remove('hidden');
@@ -1748,15 +1956,21 @@
                 }
             }
 
-            updateMergeInfo() {
-                const mergeInfo = document.getElementById('mergeInfo');
+            updateMergeInfo(toolType) {
+                let mergeInfo;
+                
+                if (toolType === 'merge') {
+                    mergeInfo = document.getElementById('mergeInfo');
+                }
+                
+                if (!mergeInfo) return;
+                
                 const totalFiles = this.files.length;
-
                 mergeInfo.textContent = `${totalFiles} arquivo(s) selecionado(s)`;
             }
 
             // Operações de arquivos
-            moveFile(index, direction) {
+            moveFile(index, direction, toolType) {
                 const newIndex = index + direction;
                 
                 if (newIndex >= 0 && newIndex < this.files.length) {
@@ -1764,14 +1978,14 @@
                     const [movedFile] = this.files.splice(index, 1);
                     this.files.splice(newIndex, 0, movedFile);
                     
-                    this.updateUI();
+                    this.updateUI(toolType);
                     this.showNotification(`Arquivo movido para a posição ${newIndex + 1}`);
                 }
             }
 
-            removeFile(fileId) {
+            removeFile(fileId, toolType) {
                 this.files = this.files.filter(file => file.id !== fileId);
-                this.updateUI();
+                this.updateUI(toolType);
                 this.showNotification('Arquivo removido');
             }
 
@@ -1787,14 +2001,14 @@
                     }
                 });
                 
-                this.updateUI();
+                this.updateUI('merge');
                 this.showNotification(`Arquivos ordenados ${order === 'asc' ? 'A-Z' : 'Z-A'}`);
             }
 
             clearAllFiles() {
                 if (confirm('Tem certeza que deseja remover todos os arquivos?')) {
                     this.files = [];
-                    this.updateUI();
+                    this.updateUI('merge');
                     this.showNotification('Todos os arquivos foram removidos');
                 }
             }
@@ -2476,10 +2690,6 @@
         }
 
         function ocrPDF() {
-            figaro.processTool();
-        }
-
-        function processTemplate() {
             figaro.processTool();
         }
 
